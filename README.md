@@ -1,15 +1,29 @@
 # BlockWatch
 
-Overview
+## Overview
+**BlockWatch** is a simple machine learning project focused on detecting crypto fraud using a **Graph Convolutional Network (GCN)**.
 
-A simple machine learning repository for crypto fraud detection using a graph convolutional network (GCN) to analyze:
+The model analyzes blockchain transaction data by representing wallets and transactions as a graph, enabling detection of suspicious behavior patterns that are difficult to identify with traditional methods.
 
-wallet-to-wallet transaction patterns
-wallet activity features
-suspicious connectivity behavior across transaction graphs
-Goal
+---
 
-Classify wallets as:
+BlockWatch leverages graph-based features such as:
 
-0 = normal
-1 = suspicious / fraudulent
+- **Wallet-to-wallet transaction patterns**
+- **Wallet activity features**
+- **Connectivity behavior across transaction graphs**
+
+---
+
+## Goal
+Classify crypto wallets into:
+
+- `0` → Normal  
+- `1` → Suspicious / Fraudulent  
+
+---
+
+## Model
+- Graph Convolutional Network (GCN)
+- Learns relationships between wallets via transaction edges
+- Captures both **local** and **global** graph structure
