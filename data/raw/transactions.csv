@@ -1,1 +1,30 @@
+source,target,amount,timestamp,label
+wallet_1,wallet_2,120,2025-01-01 10:00:00,0
+wallet_2,wallet_3,90,2025-01-01 10:05:00,0
+wallet_3,wallet_4,110,2025-01-01 10:10:00,0
 
+# smurfing (split transactions)
+wallet_10,wallet_20,200,2025-01-02 09:00:00,1
+wallet_10,wallet_21,180,2025-01-02 09:01:00,1
+wallet_10,wallet_22,220,2025-01-02 09:02:00,1
+wallet_10,wallet_23,210,2025-01-02 09:03:00,1
+
+# fan-in aggregation
+wallet_30,wallet_40,500,2025-01-03 12:00:00,1
+wallet_31,wallet_40,700,2025-01-03 12:01:00,1
+wallet_32,wallet_40,650,2025-01-03 12:02:00,1
+
+# circular transaction
+wallet_80,wallet_81,300,2025-01-04 15:00:00,1
+wallet_81,wallet_82,290,2025-01-04 15:02:00,1
+wallet_82,wallet_80,280,2025-01-04 15:04:00,1
+
+# normal random activity
+wallet_5,wallet_6,75,2025-01-05 08:00:00,0
+wallet_6,wallet_7,60,2025-01-05 09:00:00,0
+wallet_7,wallet_8,50,2025-01-05 10:00:00,0
+
+# sudden spike anomaly
+wallet_9,wallet_11,40,2025-01-06 10:00:00,0
+wallet_9,wallet_12,45,2025-01-06 10:05:00,0
+wallet_9,wallet_13,5000,2025-01-06 10:06:00,1

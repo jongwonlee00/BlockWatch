@@ -23,7 +23,41 @@ Classify crypto wallets into:
 
 ---
 
+## Fraud Detection Logic
+- Structuring (smurfing)
+  Many small transactions instead of one big one
+  Example: $10,000 split into 50 transfers of $200
+- Fan-in / Fan-out patterns
+  Fan-in: many wallets → one wallet (aggregation)
+  Fan-out: one wallet → many wallets (distribution)
+- Circular transactions
+  Money loops back to original wallet (laundering)
+- Behavioral anomalies
+  Wallet suddenly changes behavior:
+  normally sends small → suddenly sends large
+  low frequency → high burst activity
+
 ## Model
 - Graph Convolutional Network (GCN)
 - Learns relationships between wallets via transaction edges
 - Captures both **local** and **global** graph structure
+
+## Install
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -m src.train
+``` 
+
+## Requirements
+
+- torch
+- torch-geometric
+- pandas
+- numpy
+- scikit-learn
+- networkx
+- matplotlib
+
