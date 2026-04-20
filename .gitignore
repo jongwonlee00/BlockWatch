@@ -5,3 +5,8 @@ __pycache__/
 .DS_Store
 data/processed/
 *.pt
+
+## RAW Kaggle datasets
+elliptic_txs_classes.csv
+elliptic_txs_edgelist.csv
+elliptic_txs_features.csv
