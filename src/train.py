@@ -1,10 +1,10 @@
 import torch
 from sklearn.model_selection import train_test_split
 
-from src.config import Config
-from src.data_loader import build_graph, load_transactions
-from src.evaluate import evaluate
-from src.model import FraudGCN
+from config import Config
+from data_loader import build_graph, load_transactions
+from evaluate import evaluate
+from model import FraudGCN
 
 
 config = Config()
