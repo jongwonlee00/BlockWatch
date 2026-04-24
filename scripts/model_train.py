@@ -21,9 +21,9 @@ import numpy as np
 
 import os
 import sys
-classes_path = r"train_data/elliptic_txs_classes.csv"
-edgelist_path = r"train_data/elliptic_txs_edgelist.csv"
-features_path = r"train_data/elliptic_txs_features.csv"
+classes_path = r"data/raw/elliptic_txs_classes.csv"
+edgelist_path = r"data/raw/elliptic_txs_edgelist.csv"
+features_path = r"data/raw/elliptic_txs_features.csv"
 
 print(os.getcwd())
 
@@ -117,8 +117,8 @@ test_mask = labeled & torch.tensor(time_steps >= 43)
 ##################################################################################################################
 
 train_labels = y[train_mask]
-n_licit      = (train_labels == 0).sum().item()
-n_illicit    = (train_labels == 1).sum().item()
+n_licit = (train_labels == 0).sum().item()
+n_illicit = (train_labels == 1).sum().item()
 class_weight = torch.tensor([1.0, n_licit / n_illicit], dtype=torch.float)
 
 ##################################################################################################################
@@ -138,7 +138,6 @@ data.test_mask = test_mask
 #                                             9. GCN Engineering                                                 #
 ##################################################################################################################
 
-# Back to plain GraphSAGE — this got you 0.77 before
 class GraphSage(torch.nn.Module):
     def __init__(self, in_channels, hidden_channels, out_channels, dropout=0.5):
         super().__init__()
@@ -162,9 +161,9 @@ criterion = torch.nn.CrossEntropyLoss(weight=class_weight)
 #                                             10. Training Loop                                                  #
 ##################################################################################################################
 
-best_val_f1   = 0.0
-best_epoch    = 0
-patience      = 50          # back to 50 — model needs room to breathe
+best_val_f1 = 0.0
+best_epoch = 0
+patience = 50
 epochs_no_imp = 0
 
 def train():
@@ -195,8 +194,8 @@ def evaluate_with_threshold(mask, threshold=0.5, verbose=False):
 
     return best_f1, pr_auc, best_thresh
 
-for epoch in range(1, 601):       # give it more room — 600 epochs
-    loss                    = train()
+for epoch in range(1, 601):
+    loss = train()
     f1, pr_auc, best_thresh = evaluate_with_threshold(data.val_mask)
 
     if f1 > best_val_f1:
@@ -226,10 +225,10 @@ f1, pr_auc, best_thresh = evaluate_with_threshold(data.test_mask, verbose=True)
 print(f"Test F1: {f1:.4f} | Test PR-AUC: {pr_auc:.4f} | Best Threshold: {best_thresh:.4f}")
 
 torch.save({
-    "data":        data,
+    "data": data,
     "tx_to_index": tx_to_index,
     "best_thresh": best_thresh,
-    "scaler":      scaler
+    "scaler": scaler
 }, "graph_data.pt")
 
 print("\nSaved → best_model.pt, graph_data.pt")
