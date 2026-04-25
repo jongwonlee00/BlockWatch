@@ -1,0 +1,19 @@
+/Users/jongwonlee/BlockWatch/scripts/model_train.py:78: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:256.)
+  edge_index = torch.tensor([source, destination], dtype=torch.long)
+/Users/jongwonlee/BlockWatch
+Epoch 020 | Loss: 0.3176 | Val F1: 0.5346 | PR-AUC: 0.5570
+Epoch 040 | Loss: 0.2199 | Val F1: 0.7172 | PR-AUC: 0.7482
+Epoch 060 | Loss: 0.1635 | Val F1: 0.7299 | PR-AUC: 0.7686
+Epoch 080 | Loss: 0.1348 | Val F1: 0.7149 | PR-AUC: 0.7567
+Epoch 100 | Loss: 0.1102 | Val F1: 0.7166 | PR-AUC: 0.7499
+
+Early stopping at epoch 107 — no improvement for 50 epochs
+
+Best Val F1: 0.7362 at epoch 57
+
+--- Test Evaluation ---
+  Default threshold F1 : 0.0493
+  Optimal threshold    : 0.1240 → F1: 0.0829
+Test F1: 0.0829 | Test PR-AUC: 0.0361 | Best Threshold: 0.1240
+
+Saved → best_model.pt, graph_data.pt
